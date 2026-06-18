@@ -11,7 +11,7 @@ import (
 
 func main() {
 	// 1. Load environment variables dari .env file
-	if err := godotenv.Load("C:/laragon1/www/my_catalog_book/.env"); err != nil {
+	if err := godotenv.Load("C:/laragon1/www/my-firebase-backend/.env"); err != nil {
 		log.Println("File .env tidak ditemukan, menggunakan environment variable sistem")
 	}
 	// 2. Inisialisasi Firebase Admin SDK
