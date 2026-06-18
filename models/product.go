@@ -12,6 +12,8 @@ type Product struct {
     Category    string  `gorm:"size:100;index" json:"category"`
     ImageURL    string  `gorm:"size:500" json:"image_url"`
     IsActive    bool    `gorm:"default:true;index" json:"is_active"`
+
+    Items []OrderItem `json:"items" gorm:"foreignKey:ProductID"`
 }
 
 // Data Transfer Object (DTO) untuk validasi input dari HTTP request

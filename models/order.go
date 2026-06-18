@@ -17,4 +17,5 @@ type Order struct {
 
 	PaymentMethod string `json:"payment_method"`
 
+	Items []OrderItem `json:"items" gorm:"foreignKey:OrderID"`
 }
