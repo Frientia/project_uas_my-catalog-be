@@ -11,7 +11,7 @@ import (
 
 func main() {
 	// 1. Load environment variables dari .env file
-	if err := godotenv.Load("C:/laragon1/www/my-firebase-backend/.env"); err != nil {
+	if err := godotenv.Load(".env"); err != nil {
 		log.Println("File .env tidak ditemukan, menggunakan environment variable sistem")
 	}
 	// 2. Inisialisasi Firebase Admin SDK
@@ -25,8 +25,8 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	log.Printf("Server berjalan di http://localhost:8080:%s", port)
-	log.Printf("Health check: http://localhost:8080:%s/v1/health", port)
+	log.Printf("Server berjalan di http://localhost:%s", port)
+	log.Printf("Health check: http://localhost:%s/v1/health", port)
 	if err := router.Run(":" + port); err != nil {
 		log.Fatalf("Gagal menjalankan server: %v", err)
 	}
