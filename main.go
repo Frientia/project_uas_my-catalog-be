@@ -25,8 +25,8 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	log.Printf("Server berjalan di http://localhost:%s", port)
-	log.Printf("Health check: http://localhost:%s/v1/health", port)
+	log.Printf("Server berjalan di http://192.168.110.49:%s", port)
+	log.Printf("Health check: http://192.168.110.49:%s/v1/health", port)
 	if err := router.Run(":" + port); err != nil {
 		log.Fatalf("Gagal menjalankan server: %v", err)
 	}
