@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/Frientia/my-firebase-backend/handlers"
 	"github.com/Frientia/my-firebase-backend/middleware"
+	"github.com/Frientia/my-firebase-backend/repositories"
 	"github.com/gin-gonic/gin"
 )
 
@@ -21,9 +22,13 @@ func SetupRouter() *gin.Engine {
 		c.Next()
 	})
 
-	// Init handlers
+	// 1. Init Repositories
+	userRepo := repositories.NewUserRepository()
+
+	// 2. Init Handlers
 	authHandler := handlers.NewAuthHandler()
 	productHandler := handlers.NewProductHandler()
+	profileHandler := handlers.NewProfileHandler(userRepo) // Init Profile Handler
 
 	// API v1 group
 	v1 := r.Group("/v1")
@@ -48,10 +53,13 @@ func SetupRouter() *gin.Engine {
 			auth.POST("/verify-token", authHandler.VerifyToken)
 		}
 
-		// Protected routes (require Backend JWT)
+		// Protected routes (require Backend JWT/Firebase Token)
 		protected := v1.Group("")
 		protected.Use(middleware.AuthMiddleware())
 		{
+			// 3. DAFTARKAN ROUTE PROFIL DI SINI
+			protected.GET("/profile", profileHandler.GetProfile)
+
 			products := protected.Group("/products")
 			{
 				products.GET("", productHandler.GetAll)
