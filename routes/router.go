@@ -40,6 +40,7 @@ func SetupRouter() *gin.Engine {
 	v1.POST("/orders/checkout", handlers.Checkout)
 	v1.GET("/orders", handlers.GetMyOrders)
 	v1.GET("/orders/:id", handlers.GetOrderDetail)
+	v1.POST("/orders/:id/pay", handlers.PaymentCallback)
 	
 	{
 		// Health check

@@ -102,3 +102,7 @@ func GetOrderDetail(
 
 	return repositories.GetOrderByID(id)
 }
+
+func MarkOrderAsPaid(orderID int) error {
+	return repositories.UpdateOrderStatus(orderID, "paid")
+}

@@ -47,3 +47,8 @@ func GetOrderByID(
 
 	return &order, err
 }
+
+func UpdateOrderStatus(orderID int, status string) error {
+	err := config.DB.Model(&models.Order{}).Where("id = ?", orderID).Update("status", status).Error
+	return err
+}

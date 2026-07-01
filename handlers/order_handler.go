@@ -84,3 +84,25 @@ func GetOrderDetail(c *gin.Context) {
 		"data": order,
 	})
 }
+
+func PaymentCallback(c *gin.Context) {
+	idParam := c.Param("id")
+
+	var id uint
+	fmt.Sscanf(idParam, "%d", &id)
+
+	err := services.MarkOrderAsPaid(int(id))
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"success": false,
+			"message": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"message": "Status pesanan berhasil diubah menjadi paid",
+	})
+}
