@@ -22,7 +22,7 @@ Project ini adalah backend API untuk sistem My Catalog Book yang digunakan untuk
 ## Demo Video
 Lihat demo aplikasi dan alur fitur yang tersedia dalam video berikut.
 
-**[Watch Full Demo on YouTube]()**
+**[Watch Full Demo on YouTube](https://youtu.be/3T_PeOEtE7w)**
 
 Alternative link: **[Google Drive Demo]()**
 
